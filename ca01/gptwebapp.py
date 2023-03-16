@@ -37,6 +37,7 @@ def index():
     return f'''
         <h1>GPT Demo</h1>
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
+        <hr>
         <a href="{url_for('CCgpt')}">Caesar Cipher GPT</a>
     '''
 
