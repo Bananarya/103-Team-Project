@@ -50,6 +50,19 @@ class GPT():
 
         response = completion.choices[0].text
         return response
+    def CC(self,str, key):
+        ans = ''
+        for i in str:
+            if (i != ' '):
+                convert = ord(i) + key
+                if convert > 122:
+                    convert = convert - 58
+                if convert < 65:
+                    convert = convert + 58
+                ans = ans + chr(convert)
+            else:
+                ans = ans + ' ' 
+        return ans
     def getifhappy(self,specialn):
         '''Get if the input number is a happy number'''
         seen = set()
