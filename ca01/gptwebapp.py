@@ -27,6 +27,7 @@ On Windows:
 from flask import request,redirect,url_for,Flask
 from gpt import GPT
 import os
+import random
 
 app = Flask(__name__)
 gptAPI = GPT(os.environ.get('APIKEY'))
@@ -41,7 +42,7 @@ def index():
     return f'''
         <h1>Index Page</h1>
         <a href="{url_for('gptdemorongzi')}">Ask questions to Rongzi's GPT</a> <br />
-        <a href="{url_for('Caesar-Cipher-gpt')}">Ask questions to James's GPT</a> <br />
+        <a href="{url_for('CCgpt')}">Ask questions to James's GPT</a> <br />
         <a href="{url_for('about')}">Go to the about page</a> <br />
         <a href="{url_for('team')}">Go to the team page</a> <br />
         <a href="{url_for('index')}">Back to the index page</a> <br />
