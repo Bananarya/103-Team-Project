@@ -41,6 +41,7 @@ def index():
     return f'''
         <h1>Index Page</h1>
         <a href="{url_for('gptdemorongzi')}">Ask questions to Rongzi's GPT</a> <br />
+        <a href="{url_for('Caesar-Cipher-gpt')}">Ask questions to James's GPT</a> <br />
         <a href="{url_for('about')}">Go to the about page</a> <br />
         <a href="{url_for('team')}">Go to the team page</a> <br />
         <a href="{url_for('index')}">Back to the index page</a> <br />
@@ -59,7 +60,7 @@ def CCgpt():
         <pre style="bgcolor:yellow">{prompt}</pre>
         <hr>
         Caesar Cipher text:
-        <div style="border:thin solid black">{CC(answer,key)}</div>
+        <div style="border:thin solid black">{gptAPI.CC(answer,key)}</div>
         <hr>
         <h1>Translate</h1>
         <div style="border:thin solid black">{answer}</div>
