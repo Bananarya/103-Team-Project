@@ -47,6 +47,35 @@ def index():
     '''
 
 
+
+@app.route('/Caesar-Cipher-gpt', methods = ['GET', 'POST'])
+def CCgpt():
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        answer = gptAPI.getResponse(prompt)
+        key = random.randint(1,26)
+        return f'''
+        <h1>Caesar Cipher GPT</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Caesar Cipher text:
+        <div style="border:thin solid black">{CC(answer,key)}</div>
+        <hr>
+        <h1>Translate</h1>
+        <div style="border:thin solid black">{answer}</div>
+        <hr>
+        <a href={url_for('CCgpt')}> make another query</a>
+        <a href={url_for('index')}> home page </a>
+        '''
+    else:
+        return '''
+        <h1>Caesar Cipher GPT</h1>
+        Enter your query below
+        <form method="post">
+            <textarea name="prompt"></textarea>
+            <p><input type=submit name="response" value="get response">
+        </form>
+        '''
 @app.route('/gptdemorongzi', methods=['GET', 'POST'])
 def gptdemorongzi():
     ''' handle a get request by sending a form 
