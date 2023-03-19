@@ -70,13 +70,14 @@ def CCgpt():
         <a href={url_for('index')}> home page </a>
         '''
     else:
-        return '''
+        return f'''
         <h1>Caesar Cipher GPT</h1>
         Enter your query below
         <form method="post">
             <textarea name="prompt"></textarea>
             <p><input type=submit name="response" value="get response">
         </form>
+        <a href={url_for('index')}> home page </a>  
         '''
 @app.route('/gptdemorongzi', methods=['GET', 'POST'])
 def gptdemorongzi():
@@ -119,7 +120,18 @@ def about():
     13 is a happy number<br />
     Here is the link to it: 
     '''+f'''<a href="{url_for('gptdemorongzi')}">Go to Rongzi's chatgpt to check if a number is happy</a><br />
-    <a href="{url_for('index')}">Back to the index page</a> '''
+    <a href="{url_for('index')}">Back to the index page</a> 
+    
+    <h3> James Ma </h3>
+    The website create a chatGPT answer encrypted in Caesar Cipher. The key is randomly generated and the translation is provided. <br>
+    Here is the link to it: 
+    '''+f'''<a href="{url_for('CCgpt')}">Caesar Cipher GPT for encrypted answer</a><br />
+    <a href="{url_for('index')}">Back to the index page</a> 
+    
+    
+    '''
+
+
 
 @app.route('/team')
 def team():
@@ -128,6 +140,10 @@ def team():
     <h2> Rongzi Xie </h2>
     Hi, My name is Rongzi Xie. I'm a Junior who major in CS and Applied Math. I'm also an Office Assistant in the department, so welcome to come by and say hi when I'm in the office. <br />
     I'm responsible for the getifhappy method and also the demo of a structure<br />
+    <h3> James Ma </h3>
+    I am James Ma. I am a Junior majoring in CS and Math. I am also an Office Assistant in the department. I am TAing for 12 and 121 as well.  I coded the Caeser Cipher ChatGPT which returns encrypted answers. <br>
+
+    <br>
     <a href="{url_for('index')}">Back to the index page</a> 
     '''
 
