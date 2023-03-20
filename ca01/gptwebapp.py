@@ -210,7 +210,7 @@ def team():
     <h1>Team Page</h1>
     <h2> Rongzi Xie </h2>
     Hi, My name is Rongzi Xie. I'm a Junior who major in CS and Applied Math. I'm also an Office Assistant in the department, so welcome to come by and say hi when I'm in the office. <br />
-    I'm responsible for the getifhappy method and also the demo of a structure<br />
+    I'm responsible for the getifhappy method and also the demo of this project<br />
     <h3> James Ma </h3>
     I am James Ma. I am a Junior majoring in CS and Math. I am also an Office Assistant in the department. I am TAing for 12 and 121 as well.  I coded the Caeser Cipher ChatGPT which returns encrypted answers. <br>
     <h2> Keer Xu </h2>
