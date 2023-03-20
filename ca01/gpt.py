@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar 13 08:15:17 2023
+
+@author: Bananarya
+"""
 '''
 Demo code for interacting with GPT-3 in Python.
 
@@ -44,6 +50,47 @@ class GPT():
 
         response = completion.choices[0].text
         return response
+    def CC(self,str, key):
+        ans = ''
+        for i in str:
+            if (i != ' '):
+                convert = ord(i) + key
+                if convert > 122:
+                    convert = convert - 58
+                if convert < 65:
+                    convert = convert + 58
+                ans = ans + chr(convert)
+            else:
+                ans = ans + ' ' 
+        return ans
+    def getifhappy(self,specialn):
+        '''Get if the input number is a happy number'''
+        seen = set()
+        n=specialn
+        while n != 1:
+            n = sum(int(i) ** 2 for i in str(n))
+            if n in seen:
+                return "This nummber is not a happy number, so sad"
+            seen.add(n)
+        return "This number is a happy number, yeah!"
+    
+    def isPalindrome(self, word):
+        '''Check if the input word is palindrome'''
+        char_list = [char for char in word]
+        for i in range(len(char_list)//2):
+            if char_list[i] != char_list[len(char_list)-i-1]:
+                return "This input word is not a palindrome."
+        return "Great! the input word is a palindrome!"
+    
+    def getProductTable(self,prompt):
+        '''Show product table'''
+        input = prompt.split()
+        result = ""
+        for i in range(int(input[0]),int(input[1])+1):
+            for j in range(int(input[0]),int(input[1])+1):
+                result += str(i)+"*"+str(j)+"="+str(i*j)+"\t"
+            result += "<br />"
+        return result
 
 if __name__=='__main__':
     '''
