@@ -73,6 +73,24 @@ class GPT():
                 return "This nummber is not a happy number, so sad"
             seen.add(n)
         return "This number is a happy number, yeah!"
+    
+    def isPalindrome(self, word):
+        '''Check if the input word is palindrome'''
+        char_list = [char for char in word]
+        for i in range(len(char_list)//2):
+            if char_list[i] != char_list[len(char_list)-i-1]:
+                return "This input word is not a palindrome."
+        return "Great! the input word is a palindrome!"
+    
+    def getProductTable(self,prompt):
+        '''Show product table'''
+        input = prompt.split()
+        result = ""
+        for i in range(int(input[0]),int(input[1])+1):
+            for j in range(int(input[0]),int(input[1])+1):
+                result += str(i)+"*"+str(j)+"="+str(i*j)+"\t"
+            result += "<br />"
+        return result
 
 if __name__=='__main__':
     '''
