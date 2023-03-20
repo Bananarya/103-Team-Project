@@ -43,6 +43,8 @@ def index():
         <h1>Index Page</h1>
         <a href="{url_for('gptdemorongzi')}">Ask questions to Rongzi's GPT</a> <br />
         <a href="{url_for('CCgpt')}">Ask questions to James's GPT</a> <br />
+        <a href="{url_for('gptdemokeer')}">Ask questions to Keer's GPT</a> <br />
+        <a href="{url_for('gptdemoliulu')}">Ask questions to Liulu's GPT</a> <br />
         <a href="{url_for('about')}">Go to the about page</a> <br />
         <a href="{url_for('team')}">Go to the team page</a> <br />
         <a href="{url_for('index')}">Back to the index page</a> <br />
@@ -108,6 +110,63 @@ def gptdemorongzi():
         </form>
         <a href="{url_for('index')}">Back to the index page</a> <br />
         '''
+    
+@app.route('/gptdemoliulu', methods=['GET', 'POST'])
+def gptdemoliulu():
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        answer1=gptAPI.getProductTable(prompt)
+        return f'''
+        <h1>Liulu's FormPage</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is your product table:
+        <div style="border:thin solid black">{answer1}</div> 
+        <a href={url_for('gptdemoliulu')}> make another query</a><br />
+        <a href="{url_for('index')}">Back to the index page</a>
+        '''
+    else:
+        return f'''
+        <h1>Liulu's FormPage</h1>
+        Enter two numbers below, I will produce a product table for you.
+        <form method="post">
+            <textarea name="prompt"></textarea>
+            <p><input type=submit value="get response">
+        </form>
+        <a href="{url_for('index')}">Back to the index page</a> <br />
+        '''
+    
+@app.route('/gptdemokeer', methods=['GET', 'POST'])
+def gptdemokeer():
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        answer1=gptAPI.isPalindrome(prompt)
+        return f'''
+        <h1>Keer's FormPage</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is the answer to check whether the input word is a palindrome:
+        <div style="border:thin solid black">{answer1}</div>
+        <a href={url_for('gptdemokeer')}> make another query</a><br />
+        <a href="{url_for('index')}">Back to the index page</a>  
+        '''
+    else:
+        return f'''
+        <h1>Keer's FormPage</h1>
+        Enter a word, I will tell you whether that word is a palindrome or not.
+        <form method="post">
+            <textarea name="prompt"></textarea>
+            <p><input type=submit value="get response">
+        </form>
+        <a href="{url_for('index')}">Back to the index page</a> <br />
+        '''
+
 @app.route('/about')
 def about():
     return '''
@@ -122,10 +181,22 @@ def about():
     '''+f'''<a href="{url_for('gptdemorongzi')}">Go to Rongzi's chatgpt to check if a number is happy</a><br />
     <a href="{url_for('index')}">Back to the index page</a> 
     
-    <h3> James Ma </h3>
+    <h2> James Ma </h2>
     The website create a chatGPT answer encrypted in Caesar Cipher. The key is randomly generated and the translation is provided. <br>
     Here is the link to it: 
     '''+f'''<a href="{url_for('CCgpt')}">Caesar Cipher GPT for encrypted answer</a><br />
+
+    <h2> Keer Xu </h2>
+    I created a webpage to check whether an input word is palindrome or not. A palindrome is defined as a word or phrase that is exactly the same
+    reading from the front or back. </br>
+    For example: racecar and madam are palindrome but dog or cat are not palindrome. <br />
+    '''+f'''<a href="{url_for('gptdemokeer')}">A web page to tell you whether a word is palindrome</a><br />
+
+    <h2> Liulu Yue </h2>
+    I created a webpage to produce product table with user specified lower and upper bound. <br />
+    Entering two numbers separated by a space, the webpage will produce a product table with multipliers being all integers between the two entered numbers. </br>
+    Here is the link to it:
+    '''+f'''<a href="{url_for('gptdemoliulu')}">A web page to generate product table</a><br />
     <a href="{url_for('index')}">Back to the index page</a> 
     
     
@@ -142,7 +213,12 @@ def team():
     I'm responsible for the getifhappy method and also the demo of a structure<br />
     <h3> James Ma </h3>
     I am James Ma. I am a Junior majoring in CS and Math. I am also an Office Assistant in the department. I am TAing for 12 and 121 as well.  I coded the Caeser Cipher ChatGPT which returns encrypted answers. <br>
-
+    <h2> Keer Xu </h2>
+    I am Keer Xu, a junior student major in computer science and Applied Math. I am interested in Frontend Development and NLP (natural language processing).<br />
+    I am the contributor of isPalindrome() method which helps you check whether a word is palindrome or not. 
+    <br>
+    <h2> Liulu Yue </h2>
+    Hi, this is Liulu Yue, a junior majoring in Computer Science and Applied Mathematics. I'm interested in Artificial Intelligence and NLP. I'm responsible for the webpage that can help the user to produce a product table.
     <br>
     <a href="{url_for('index')}">Back to the index page</a> 
     '''
